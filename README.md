@@ -1,126 +1,69 @@
-# GiftPilot – AI Gift Shopping Agent
+1. GitHub README.md (copy this entirely)Markdown# GiftPilot
 
-**Built for the PayPal AI Hackathon 2026** ($67,500 prize pool)
+**AI Gift Shopping Agent powered by Claude + Channel3 + PayPal**
 
-An agentic commerce experience:
-1. User describes a gift + budget
-2. AI searches real products via **Channel3**
-3. User picks one
-4. Agent creates a real **PayPal sandbox order**
-5. User completes payment
+GiftPilot is an agentic commerce application that turns a simple conversation into a completed purchase.
 
-This project targets:
-- **Best Use of Agentic Commerce** ($5,000)
-- **Best Use of Channel3** ($1,500)
-- Overall prizes (1st $12k / 2nd $8k / 3rd $5k)
+Users describe who the gift is for, the occasion, interests, and budget. The AI agent:
+1. Understands the request using Claude
+2. Searches real products across thousands of retailers using Channel3
+3. Presents the best options
+4. Creates a real PayPal order when the user chooses one
+5. Lets the user complete payment securely in the PayPal sandbox
 
----
-
-## Quick Start (Local)
-
-```bash
-# 1. Go into the project
-cd giftpilot
-
-# 2. Install dependencies
-npm install --legacy-peer-deps
-
-# 3. Make sure .env.local exists with your keys:
-# PAYPAL_CLIENT_ID=...
-# PAYPAL_CLIENT_SECRET=...
-# CHANNEL3_API_KEY=...
-
-# 4. Run
-npm run dev
-```
-
-Open → http://localhost:3000
-
-### Test flow
-1. Type: `Gift for my sister who loves coffee, budget $50-80`
-2. Agent returns real products
-3. Reply: `Buy 2`
-4. Click **Pay with PayPal** → use a sandbox buyer account
-5. You land on the Success page after payment
+This is true **agentic commerce** — the AI doesn’t just recommend, it transacts.
 
 ---
 
-## Project Structure
+## Live Demo
 
-```
-src/
-├── app/
-│   ├── page.tsx              # Main chat UI
-│   ├── success/page.tsx      # After PayPal payment
-│   ├── cancel/page.tsx       # If user cancels
-│   └── api/
-│       ├── chat/route.ts     # Agent endpoint
-│       └── capture/route.ts  # Capture order after approval
-├── lib/
-│   ├── agent.ts              # Core gift agent logic
-│   ├── channel3.ts           # Product search
-│   └── paypal.ts             # Create + capture orders
-```
+https://giftpilot-coral.vercel.app/
+
+## Demo Video
+
+[Your YouTube link here]
 
 ---
 
-## Environment Variables
+## Tech Stack
 
-Create `.env.local`:
+- **AI**: Claude (Anthropic)
+- **Product Search**: Channel3
+- **Payments**: PayPal Orders API (Sandbox)
+- **Frontend**: Next.js 16 + TypeScript + Tailwind CSS
 
-```env
-PAYPAL_CLIENT_ID=your_sandbox_client_id
+---
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install --legacy-peer-deps
+Create a .env.local file:envPAYPAL_CLIENT_ID=your_sandbox_client_id
 PAYPAL_CLIENT_SECRET=your_sandbox_secret
 CHANNEL3_API_KEY=your_channel3_key
-# Optional later:
-# OPENAI_API_KEY=sk-...
-# NEXT_PUBLIC_BASE_URL=https://your-deployed-url.com
-```
+ANTHROPIC_API_KEY=your_claude_key
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+Run the development server:Bashnpm run dev
+Open http://localhost:3000
+How it works
+User describes a gift request
+Claude extracts intent and budget
+Channel3 searches real products
+User selects a product (“Buy 2”)
+The agent creates a PayPal order
+User completes payment in PayPal sandbox
+Order is captured and success page is shown
+Built forPayPal AI Hackathon 2026Targeting:
+Best Use of Agentic Commerce
+Best Use of Channel3
+Overall prizes
+LicenseMITtext---
 
----
+### 2. “Built With” section for Devpost submissionClaude (Anthropic), Channel3, PayPal Orders API, Next.js, TypeScript, Tailwind CSStextOr the longer version if the form allows more detail:AI Reasoning: Claude (Anthropic)
+Product Search: Channel3
+Payments: PayPal Orders API (Sandbox)
+Frontend: Next.js 16 + TypeScript + Tailwind CSStext---
 
-## Deployment (Render / Vercel)
-
-### Option A – Vercel (easiest)
-1. Push the repo to GitHub
-2. Import into Vercel
-3. Add the environment variables
-4. Deploy
-
-### Option B – Render
-1. Create a new **Web Service**
-2. Connect the repo
-3. Build command: `npm install --legacy-peer-deps && npm run build`
-4. Start command: `npm start`
-5. Add environment variables
-
-After deploy, set `NEXT_PUBLIC_BASE_URL` to your live URL so PayPal return links work correctly.
-
----
-
-## Demo Video Tips (≤ 3 minutes)
-
-1. Show the problem (hard to find good gifts)
-2. Type a natural request
-3. Show product cards appearing
-4. Say “Buy 1”
-5. Click Pay with PayPal and complete sandbox payment
-6. Land on Success page
-
-Keep it under 2:45 so judges see the full flow.
-
----
-
-## Roadmap (optional upgrades)
-
-- [ ] Replace simple keyword agent with OpenAI / Claude for smarter reasoning
-- [ ] Store conversation state so “Buy 2” works across messages without re-search
-- [ ] Add product images more reliably
-- [ ] Multi-currency support
-- [ ] Gift wrapping / note feature
-
----
-
-## License
-
-MIT – built for the PayPal AI Hackathon 2026
+### 3. Short Tagline / Elevator Pitch (for Devpost)An AI agent that finds the perfect gift and buys it for you with PayPal — true agentic commerce.text
