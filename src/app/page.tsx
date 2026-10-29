@@ -210,13 +210,15 @@ function Tile({
   icon: ReactNode;
 }) {
   return (
-    <div className="glass flex items-center gap-3 rounded-3xl p-4 transition hover:border-gold/40">
-      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl border border-gold/25 bg-gold/10 text-gold">
+    <div className="glass flex items-center gap-3 rounded-3xl p-3 transition hover:border-gold/40 md:p-4">
+      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-xl border border-gold/25 bg-gold/10 text-gold md:h-9 md:w-9">
         {icon}
       </span>
       <div className="min-w-0">
         <p className="eyebrow">{label}</p>
-        <p className="truncate text-sm font-semibold text-cream">{value}</p>
+        <p className="text-[13px] font-semibold leading-snug text-cream">
+          {value}
+        </p>
       </div>
     </div>
   );
@@ -353,8 +355,8 @@ export default function Home() {
 
   return (
     <div className="noise relative min-h-screen">
-      <div className="aurora-blob -left-[14%] -top-[20%] h-[460px] w-[460px] bg-berry/25" />
-      <div className="aurora-blob aurora-blob-b -right-[10%] top-[8%] h-[400px] w-[400px] bg-gold/18" />
+      <div className="aurora-blob -left-[22%] -top-[26%] h-[300px] w-[300px] bg-berry/20 md:h-[460px] md:w-[460px]" />
+      <div className="aurora-blob aurora-blob-b -right-[18%] -top-[6%] h-[260px] w-[260px] bg-gold/12 md:h-[380px] md:w-[380px]" />
       <Snowfall />
 
       <div className="relative z-10 flex min-h-screen flex-col">
@@ -388,38 +390,38 @@ export default function Home() {
         </header>
 
         {/* ---------------- Conversation ---------------- */}
-        <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-44 pt-7">
+        <main className="mx-auto w-full max-w-3xl flex-1 px-4 pb-40 pt-4">
           {showHero && (
-            <section className="mb-10">
+            <section className="mb-7">
               <div className="rise inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-gold-soft">
                 <Snowflake className="h-3.5 w-3.5" />
                 Holiday edition
               </div>
 
-              <h2 className="text-gradient rise rise-2 mt-5 font-display text-[2.6rem] font-semibold leading-[0.98] tracking-[-0.03em] sm:text-[4rem]">
+              <h2 className="text-gradient rise rise-2 mt-3.5 font-display text-[clamp(2.1rem,7vw,4rem)] font-semibold leading-[1.02] tracking-[-0.03em]">
                 Find a gift they&apos;ll actually love.
               </h2>
 
-              <p className="rise rise-3 text-pretty mt-5 max-w-lg text-[15px] leading-relaxed text-sage">
+              <p className="rise rise-3 text-pretty mt-3.5 max-w-2xl text-[15px] leading-relaxed text-sage">
                 Describe the person, the occasion and your budget — GiftPilot
                 searches live products with Channel3, ranks them for fit and
                 checks out with PayPal, all in one conversation.
               </p>
 
-              <div className="rise rise-4 mt-8 grid gap-3 sm:grid-cols-3">
-                <div className="glass rounded-[1.75rem] p-5 sm:col-span-2">
+              <div className="rise rise-4 mt-5 grid gap-3 sm:grid-cols-3">
+                <div className="glass rounded-[1.75rem] p-4 sm:col-span-2 sm:p-5">
                   <p className="eyebrow">Start here</p>
-                  <p className="mt-1.5 font-display text-xl font-semibold text-cream">
+                  <p className="mt-1 font-display text-lg font-semibold text-cream sm:text-xl">
                     Who are we buying for?
                   </p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="hide-scrollbar mt-3.5 flex gap-2 overflow-x-auto sm:flex-wrap sm:overflow-visible">
                     {SUGGESTIONS.map((s) => (
                       <button
                         key={s.title}
                         type="button"
                         onClick={() => sendMessage(s.text)}
                         disabled={loading}
-                        className="group inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-3.5 py-2 text-xs font-medium text-cream transition hover:border-gold/50 hover:bg-gold/10 disabled:opacity-50"
+                        className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-white/12 bg-white/6 px-3.5 py-2 text-xs font-medium text-cream transition hover:border-gold/50 hover:bg-gold/10 disabled:opacity-50"
                       >
                         <span className="text-sm transition duration-200 group-hover:scale-125">
                           {s.emoji}
@@ -544,15 +546,15 @@ export default function Home() {
 
         {/* ---------------- Composer ---------------- */}
         <div className="fixed inset-x-0 bottom-0 z-30 border-t border-white/10 bg-night/75 backdrop-blur-xl">
-          <div className="mx-auto w-full max-w-3xl px-4 pb-4 pt-3">
-            <div className="hide-scrollbar mb-2.5 flex gap-2 overflow-x-auto pb-0.5">
+          <div className="mx-auto w-full max-w-3xl px-4 pb-3 pt-2.5">
+            <div className="hide-scrollbar mb-1.5 flex gap-2 overflow-x-auto pb-0.5">
               {QUICK.map((q) => (
                 <button
                   key={q.label}
                   type="button"
                   onClick={() => sendMessage(q.text)}
                   disabled={loading}
-                  className="shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-[11px] font-medium text-sage transition hover:-translate-y-0.5 hover:border-gold/45 hover:bg-gold/10 hover:text-cream disabled:opacity-50"
+                  className="shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-medium text-sage transition hover:-translate-y-0.5 hover:border-gold/45 hover:bg-gold/10 hover:text-cream disabled:opacity-50"
                 >
                   {q.emoji} {q.label}
                 </button>
@@ -573,24 +575,22 @@ export default function Home() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="e.g. Gift for my sister who loves coffee, budget $50-80"
                 aria-label="Describe the gift you are looking for"
-                className="min-w-0 flex-1 bg-transparent py-2.5 text-sm text-cream placeholder:text-sage/70 focus:outline-none"
+                className="min-w-0 flex-1 bg-transparent py-2 text-sm text-cream placeholder:text-sage/70 focus:outline-none"
                 disabled={loading}
               />
               <button
                 type="submit"
                 disabled={loading || !input.trim()}
                 aria-label="Send message"
-                className="gold-btn h-10 w-10 shrink-0 rounded-xl"
+                className="gold-btn h-9 w-9 shrink-0 rounded-xl"
               >
                 <Send className="h-4 w-4" />
               </button>
             </form>
 
-            <div className="mt-2 flex items-center justify-between gap-3 text-[11px] text-sage">
-              <span className="font-mono">
-                ⏎ send · ⌘K focus · no real money is charged
-              </span>
-              <span className="hidden items-center gap-1.5 sm:flex">
+            <div className="mt-1 flex items-center justify-between gap-3 text-[10px] text-sage">
+              <span className="font-mono">⏎ send · ⌘K focus · sandbox mode</span>
+              <span className="hidden items-center gap-1.5 md:flex">
                 <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
                 PayPal sandbox · Channel3 live search
               </span>
