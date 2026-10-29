@@ -67,3 +67,27 @@ Payments: PayPal Orders API (Sandbox)
 Frontend: Next.js 16 + TypeScript + Tailwind CSStext---
 
 ### 3. Short Tagline / Elevator Pitch (for Devpost)An AI agent that finds the perfect gift and buys it for you with PayPal — true agentic commerce.text
+
+---
+
+## Holiday Edition — what's new in this build
+
+**Agentic reasoning** (optional, needs `ANTHROPIC_API_KEY`)
+- Claude turns a messy conversation into a clean search brief: recipient, interests, budget
+- Live Channel3 results are ranked with a **"Why it fits"** line per product, plus a visible **Gift brief**
+- No key configured? The agent falls back to the built-in heuristics, so the demo never breaks
+
+**Reliable checkout**
+- `Buy 1` / `Buy 2` — or the **Buy now** button on a card — resolves against the products actually on screen instead of re-searching
+- Budget bounds are really applied: "$50–80" no longer returns a $3,999 machine
+- Orders are created with the product's real currency
+
+**UI**
+- Festive pine/gold theme: Fraunces + Geist, bento hero, aurora + film grain, product-card glow rings, search skeletons, quick prompts, ⌘K to focus
+- Restyled success screen with confetti and a live days-to-Christmas counter
+
+### Judging checklist
+1. Type a natural request (or tap a suggestion chip)
+2. See the **Gift brief** and ranked products with reasons
+3. Click **Buy now** → PayPal sandbox order for that exact item
+4. Pay with a sandbox buyer account → confetti on `/success`

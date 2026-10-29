@@ -17,11 +17,9 @@ export async function POST(req: NextRequest) {
       status: result.status,
       details: result,
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Capture error:", error);
-    return NextResponse.json(
-      { error: error.message || "Capture failed" },
-      { status: 500 }
-    );
+    const message = error instanceof Error ? error.message : "Capture failed";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

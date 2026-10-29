@@ -1,23 +1,36 @@
 import Link from "next/link";
-import { XCircle } from "lucide-react";
+import { Gift, RotateCcw } from "lucide-react";
+import Snowfall from "@/components/snowfall";
 
 export default function CancelPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-indigo-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
-        <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <XCircle className="w-10 h-10 text-gray-500" />
+    <div className="noise relative flex min-h-screen items-center justify-center p-4">
+      <Snowfall />
+      <div className="pop glass-strong relative z-10 w-full max-w-md rounded-[2rem] p-8 text-center shadow-[0_40px_90px_-50px_rgba(0,0,0,0.9)]">
+        <div className="mx-auto mb-5 grid h-16 w-16 place-items-center rounded-3xl bg-white/6 text-3xl">
+          🎄
         </div>
-        <h1 className="text-2xl font-bold text-gray-900">Payment Cancelled</h1>
-        <p className="text-gray-600 mt-2">
-          You cancelled the PayPal payment. No charges were made.
+        <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/6 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-sage">
+          Checkout paused
+        </div>
+        <h1 className="text-gradient font-display text-3xl font-semibold leading-tight">
+          Payment cancelled
+        </h1>
+        <p className="mt-2 text-sm text-sage">
+          You cancelled the PayPal payment — no charges were made. Your gift
+          ideas are still waiting in the chat.
         </p>
-        <Link
-          href="/"
-          className="mt-6 inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2.5 rounded-xl transition"
-        >
-          Try again
-        </Link>
+
+        <div className="mt-6 flex flex-col gap-2">
+          <Link href="/" className="gold-btn h-11 px-5 text-sm">
+            <RotateCcw className="h-4 w-4" />
+            Try again
+          </Link>
+          <Link href="/" className="ghost-btn h-11 px-5 text-sm">
+            <Gift className="h-4 w-4" />
+            Browse more ideas
+          </Link>
+        </div>
       </div>
     </div>
   );
